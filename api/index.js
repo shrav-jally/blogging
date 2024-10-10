@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -27,3 +28,16 @@ app.post("/register", (req, res) => {
 app.listen(4000);
 //mongodb+srv://blog:<DBKimeF-w57vW@v>@cluster0.id0ym.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 //DBKimeF-w57vW@v
+=======
+const express = require('express');
+const app = express();
+const cors = require('cors');
+
+app.use(cors());
+
+app.post('/register', (req, res) => {
+  res.json('test ok3');
+});
+
+app.listen(4000);
+>>>>>>> aa9339363485c5b7c1c7ca89c9b816460575c184
