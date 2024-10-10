@@ -1,13 +1,12 @@
 {
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.21.1",
-<<<<<<< HEAD
     "mangodb": "^1.0.0",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
-=======
->>>>>>> aa9339363485c5b7c1c7ca89c9b816460575c184
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {

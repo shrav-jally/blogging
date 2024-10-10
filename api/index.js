@@ -1,43 +1,35 @@
-<<<<<<< HEAD
 const express = require("express");
 const cors = require("cors");
 const app = express();
-// const mongoose = require("mongoose");
-// const User = require("./models/User");
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const User = require("./models/User");
+
+const salt = bcrypt.genSaltSync(10);
 
 app.use(cors());
-// app.use(express.json());
+app.use(express.json());
+mongoose.connect(
+  "mongodb+srv://blogger:raBANyvLmkJe1hIR@cluster0.1lfeh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+);
 
-// mongoose.connect(
-//   "mongodb+srv://cluster0:DBKimeF-w57vW%40v@cluster0.id0ym.mongodb.net/blog?retryWrites=true&w=majority"
-// );
-
-app.post("/register", (req, res) => {
-  res.json("test ok");
-});
 // app.get("/test", (req, res) => {
 //   res.json("test ok");
 // });
 
-// app.post("/register", (req, res) => {
-//   const { username, password } = req.body;
-//   const userDoc = User.create({ username, password });
-//   res.json(userDoc);
-// });
-
-app.listen(4000);
-//mongodb+srv://blog:<DBKimeF-w57vW@v>@cluster0.id0ym.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-//DBKimeF-w57vW@v
-=======
-const express = require('express');
-const app = express();
-const cors = require('cors');
-
-app.use(cors());
-
-app.post('/register', (req, res) => {
-  res.json('test ok3');
+app.post("/register", async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const userDoc = await User.create({
+      username,
+      password: bcrypt.hashSync(password, salt),
+    });
+    res.json(userDoc);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 app.listen(4000);
->>>>>>> aa9339363485c5b7c1c7ca89c9b816460575c184
+//mongodb+srv://blogger:raBANyvLmkJe1hIR@cluster0.1lfeh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+//raBANyvLmkJe1hIR
